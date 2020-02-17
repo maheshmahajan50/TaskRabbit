@@ -1,0 +1,15 @@
+<h1> Edit Category</h1>
+
+<%= form_for @category do |f|%>
+
+  <h3>
+    <%= f.label :name %> <br />
+    <%= f.text_field :name, size: "10x8" %> <br />  
+  </h3>
+
+  <h3>
+  	<%= f.submit "Update Category" %>  
+  </h3>
+
+<% end %>
+<h2> <center><%= link_to "Go-back", categories_path %><center></h2>

@@ -1,0 +1,27 @@
+<h1 style="background-color: #F5F5DC"> 
+	<center>
+		<%= @task.title %>
+	</center>
+</h1>
+
+ <h4>
+    Posted at: <%= @task.created_at.strftime("%b %d. %Y")%>
+ </h4>
+
+ <h4>
+    Estimated Date: <%= @task.estimated_date.strftime("%b %d. %Y") %>
+ </h4>
+
+ <h3> <%= @task.description %> </h3>
+
+ <pre style="font-size:20px;">
+ <%= link_to 'Edit task',edit_task_path%>  <%= link_to 'Go-home',tasks_path%>  <%= link_to 'Delete task', @task, :confirm => 'Are you sure ?', :method => :delete %>
+ </pre>
+
+ <h4> Location  :<%= @task.location%> </h4>
+
+ <h4> Company  :<%= @task.company_name%> </h4>
+
+ <pre style="font-size:15px;">
+Category: <%= @task.category.name %>
+ </pre>

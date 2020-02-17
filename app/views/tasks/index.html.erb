@@ -1,0 +1,35 @@
+Categories : 
+<% Category.all.each do |category| %>
+  <%= link_to "...#{category.name}...", tasks_path(category: category.name) %>
+<% end %>
+
+<h3>
+	<center>
+		<%= link_to '~ Add new Task ~',new_task_path %>
+	</center>
+</h3>
+
+<%count = 1%>
+
+ <% @tasks.each do |task| %>
+    
+    <h2>
+    	<%= "#{count}." %> <%=link_to task.title,task %>
+    </h2>
+
+    <pre>
+        Location :<%= task.location %>
+    	Company :<%= task.company_name %>
+    </pre>
+
+    <h3> 
+    	<%= task.description.truncate(50) %>
+    </h3>
+
+    <h4 style="color: #006666">
+    	Category :<%=task.category.name%>
+    </h4>
+
+    <% count += 1 %>
+
+ <% end %>
