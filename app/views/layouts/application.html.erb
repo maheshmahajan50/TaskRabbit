@@ -4,6 +4,9 @@
     <title>TaskRabbit</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
@@ -11,7 +14,7 @@
 
     <center>
       <h1 style="background-color: powderblue">
-        <%= link_to "TaskRabbit", tasks_path %> 
+        TaskRabbit
       </h1> 
     </center> 
 
@@ -21,24 +24,14 @@
       </h3>
     </center>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <p class="navbar-text float-right">
-      <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <pre><center>
+      <% if current_user %>
+         Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
       <% else %>
-         <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>  
-      <% end %>
-    </p>
+         <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+      <% end %> </br> </center> </pre>  
 
     <%= yield %>
+
   </body>
 </html>

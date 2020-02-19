@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-	def index
+
+  def index
     if params[:category].blank?
       @tasks = Task.all.order("created_at DESC")
     else
@@ -21,6 +22,7 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(allowed_params)
+    @task.user = User.first
     @task.category_id = params[:category_id]
     if @task.save!
       redirect_to tasks_path
