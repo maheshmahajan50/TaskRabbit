@@ -14,10 +14,7 @@
 
  <h3> <%= @task.description %> </h3>
 
- <pre style="font-size:20px;">
- <%= link_to 'Edit task', edit_task_path(@task) %>  
- <%= link_to 'Go-home', tasks_path %>  
- <%= link_to 'Delete task', @task, method: :delete, confirm: "Are you sure?" %>
+ <pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Go-home', tasks_path %>  <%= link_to 'Delete task', @task, method: :delete, confirm: "Are you sure?" %>
  </pre>
 
  <h4> Location  :<%= @task.location%> </h4>
