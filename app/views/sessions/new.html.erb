@@ -1,10 +1,10 @@
 <h1>Login</h1>
 
-<%= form_tag login_path do %>
+<%= form_tag sessions_path do %>
 
   <h3> 
-  	 Email: <%= text_field_tag :email %>
-  </h3>	 
+     Email: <%= text_field_tag :email %>
+  </h3>  
   <h3>
     Password: <%= password_field_tag :password_digest %>
   </h3>
@@ -12,5 +12,9 @@
   <h3>
     <%= submit_tag "Submit" %>
   </h3>
+
+  <center>
+    <h3> <%= link_to 'Signup', new_user_path %> </h3>
+  </center>
   
 <% end %>

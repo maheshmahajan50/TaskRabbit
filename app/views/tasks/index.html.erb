@@ -1,3 +1,10 @@
+<pre><center>
+      <% if current_user %>
+         Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_sessions_path, method: 'delete' %>
+      <% else %>
+         <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', signup_path %>
+      <% end %> </br> </center> </pre> 
+
 Categories : 
 <% Category.all.each do |category| %>
   <%= link_to "...#{category.name}...", tasks_path(category: category.name) %>

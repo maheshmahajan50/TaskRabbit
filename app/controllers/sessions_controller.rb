@@ -4,17 +4,17 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate?(params[:password_digest])
       session[:user_id] = user.id
       redirect_to tasks_path
     else
-      redirect_to login_path
+      redirect_to new_sessions_path
     end
   end
 
-  def destroy
+  def logout
     session[:user_id] = nil
-    redirect_to login_path
+    redirect_to new_sessions_path
   end
 
 

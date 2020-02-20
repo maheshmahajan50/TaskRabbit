@@ -12,7 +12,7 @@
 
   <body>
 
-    <center>
+  <center>
       <h1 style="background-color: powderblue">
         TaskRabbit
       </h1> 
@@ -23,13 +23,9 @@
         Help around the home, at your fingertips.....
       </h3>
     </center>
-
-    <pre><center>
-      <% if current_user %>
-         Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
-      <% else %>
-         <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-      <% end %> </br> </center> </pre>  
+    
+     
+   
 
     <%= yield %>
 
