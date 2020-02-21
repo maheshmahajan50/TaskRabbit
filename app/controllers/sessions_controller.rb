@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorize, only: %i[new create]
   def new
   end
   
@@ -8,6 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to tasks_path
     else
+      flash[:alert] = "Oops! Credentials not correct"
       redirect_to new_sessions_path
     end
   end

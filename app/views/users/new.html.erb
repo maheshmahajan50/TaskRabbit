@@ -1,4 +1,13 @@
 
+<% if @user.errors.any? %>
+ <h3>Following errors prevented for user getting created..</h3>
+ <ul>
+  <% @user.errors.full_messages.each do |msg|%>
+    <li style="color: red"><%= msg %></li>
+  <%end%>
+ </ul>
+<%end%>
+
 <h1>Signup!</h1>
 
 <%= form_for :user, url: users_path do |f| %>

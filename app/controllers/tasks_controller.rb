@@ -25,6 +25,7 @@ class TasksController < ApplicationController
     @task.user = current_user
     @task.category_id = params[:category_id]
     if @task.save!
+      flash[:success] = "You have created your task successfully"
       redirect_to tasks_path
     else
       render 'new'
