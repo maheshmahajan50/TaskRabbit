@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h4 style="color: green">
+  <%=p "Contact Information of the #{@task.title}"%>
+</h4>
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @task.user.email %>
 </p>
 
 <p>
   <strong>Name:</strong>
-  <%= @user.name %>
+  <%= @task.user.name %>
 </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
 
 <p>
   <strong>Address:</strong>
-  <%= @user.address %>
+  <%= @task.user.address %>
 </p>
 
 <p>
   <strong>Contact no:</strong>
-  <%= @user.phone %>
+  <%= @task.user.phone %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h5>
+  <center>
+    <%=link_to 'Go Back', task_path%>
+  </center>
+</h5>

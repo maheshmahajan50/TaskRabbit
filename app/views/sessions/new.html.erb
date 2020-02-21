@@ -1,23 +1,18 @@
-<h1>Login</h1>
-
- <% flash.each do |type, msg| %>
-      <h3>
-       <%= msg %>
-      </h3>
-    <% end %>
+<h2>Login</h2>
 
 <%= form_tag sessions_path do %>
 
-  <h3> 
+  <p> 
      Email: <%= text_field_tag :email %>
-  </h3>  
-  <h3>
-    Password: <%= password_field_tag :password_digest %>
-  </h3>
+  </p>
 
-  <h3>
+  <p>
+    Password: <%= password_field_tag :password_digest %>
+  </p>
+
+  <p>
     <%= submit_tag "Submit" %>
-  </h3>
+  </p>
 
   <center>
     <h3> <%= link_to 'Signup', new_user_path %> </h3>

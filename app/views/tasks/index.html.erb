@@ -3,16 +3,20 @@
          Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_sessions_path, method: 'delete' %>
       <% else %>
          <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', signup_path %>
-      <% end %> </br> </center> </pre> 
-
+      <% end %> </br> </center> </pre>
+<p>      
 Categories : 
 <% Category.all.each do |category| %>
   <%= link_to "...#{category.name}...", tasks_path(category: category.name) %>
 <% end %>
+</p>
+
+<p></p>
 
 <h3>
 	<center>
-		<%= link_to '~ Add new Task ~',new_task_path %>
+		<%= link_to '~ Add new Task ~',new_task_path %>                   
+
 	</center>
 </h3>
 
@@ -20,22 +24,22 @@ Categories :
 
  <% @tasks.each do |task| %>
     
-    <h2>
+    <h4>
     	<%= "#{count}." %> <%=link_to task.title,task %>
-    </h2>
+    </h4>
 
     <pre>
         Location :<%= task.location %>
     	Company :<%= task.company_name %>
     </pre>
 
-    <h3> 
+    <p> 
     	<%= task.description.truncate(50) %>
-    </h3>
+    </p>
 
-    <h4 style="color: #006666">
+    <h6 style="color: #006666">
     	Category :<%=task.category.name%>
-    </h4>
+    </h6>
 
     <% count += 1 %>
 

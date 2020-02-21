@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
-  before_action :find_task,    only: [:edit, :show, :update, :destroy]
+  before_action :find_task,    only: [:edit, :update, :destroy]
 
   def index
     if params[:category].blank?
-      @tasks = current_user.tasks.all.order("created_at DESC")
+      @tasks = Task.all.order("created_at DESC")
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @tasks = current_user.tasks.where(category_id: @category_id).order("created_at DESC")
+      @tasks = Task.all.where(category_id: @category_id).order("created_at DESC")
     end      
   end
 
@@ -17,7 +17,6 @@ class TasksController < ApplicationController
     
   def edit
     @categories = Category.all.map{ |cat| [cat.name, cat.id] }
-
   end  
   
   def create
@@ -43,7 +42,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    
+    @task = Task.find(params[:id])
   end
 
   def destroy
@@ -54,7 +53,7 @@ class TasksController < ApplicationController
   private
 
   def allowed_params
-    params.require(:task).permit(:title, :description, :company_name, :location, :estimated_date, :category_id)
+    params.require(:task).permit(:title, :description, :company_name, :location, :estimated_date, :category_id, :user_id)
   end 
 
   def find_task

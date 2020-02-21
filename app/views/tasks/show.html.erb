@@ -1,30 +1,34 @@
-<h1 style="background-color: #F5F5DC"> 
-	<center>
-		<%= @task.title %>
+<h3 style="background-color: #F5F5DC"> 
+	<center> <b>
+		<%= @task.title %> </b>
 	</center>
-</h1>
+</h3>
 
- <h4>
+<p>
     Posted at: <%= @task.created_at.strftime("%b %d. %Y")%>
- </h4>
+</p>
 
- <h4>
+<p>
     Estimated Date: <%= @task.estimated_date.strftime("%b %d. %Y") %>
- </h4>
+</p>
 
- <h3> <%= @task.description %> </h3>
+<p> <%= @task.description %> </p>
 
- <pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Go-home', tasks_path %>  <%= link_to 'Delete task', @task, method: :delete, confirm: "Are you sure?" %>
- </pre>
+<%if @task.user.id == current_user.id%> 
+<pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Delete task', @task, method: :delete, confirm: "Are you sure?" %>
+</pre>
+<%else%>
+  <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
+     <h4> <center> <%= link_to "Complete Task", user_path%> </center>
+  <%end%>
+<%end%>
 
- <h4> Location  :<%= @task.location%> </h4>
+<h6> <b>Company  :<%= @task.company_name%> </b></h6>
 
- <h4> Company  :<%= @task.company_name%> </h4>
+<p style="color: brown">
+  Category: <%= @task.category.name %>
+</p>
 
- <h4> Created by  :<%= @task.user.name%> </h4>
-
- <h4> Contact Info  :<%= @task.user.phone%> </h4>
-
- <pre style="font-size:15px;">
-Category: <%= @task.category.name %>
- </pre>
+<h4>
+  <center>  <%= link_to 'Go-home', tasks_path %>  </center>
+</h4> 

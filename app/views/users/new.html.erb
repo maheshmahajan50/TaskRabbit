@@ -1,4 +1,6 @@
 
+<h2>Signup!</h2>
+
 <% if @user.errors.any? %>
  <h3>Following errors prevented for user getting created..</h3>
  <ul>
@@ -8,37 +10,35 @@
  </ul>
 <%end%>
 
-<h1>Signup!</h1>
-
 <%= form_for :user, url: users_path do |f| %>
 
-  <h3> 
+  <p> 
   	Name: <%= f.text_field :name %> </br> 
-  </h3>
+  </p>
 
-  <h3>
+  <p>
   	Email: <%= f.text_field :email %> </br>
-  </h3>	
+  </p>	
   
-  <h3>
+  <p>
   	Password: <%= f.password_field :password_digest %> </br>
-  </h3>
+  </p>
 
-  <h3>
+  <p>
     Role: <%= f.text_field :role %>
-  </h3>
+  </p>
 
-  <h3>
+  <p>
     Phone: <%= f.text_field :phone %>
-  </h3>
+  </p>
 
-  <h3>
+  <p>
     Address: <%= f.text_field :address %>
-  </h3>
+  </p>
   
-  <h3>
+  <p>
     <%= f.submit "Submit" %>
-  </h3>
+  </p>
 
   <center>
     <h3> <%= link_to 'Login', new_sessions_path %> </h3>

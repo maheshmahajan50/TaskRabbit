@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: %i[new create]
+  skip_before_action :authorize, only: %i[new create show]
 
   def new
     @user = User.new
@@ -16,7 +16,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
-  end 
+  end
+
+  def show
+    @task = Task.find(params[:id])
+  end
 
   private
 
