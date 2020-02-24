@@ -1,47 +1,49 @@
 
-<h2>Signup!</h2>
+  <h2>Signup!</h2>
 
-<% if @user.errors.any? %>
- <h3>Following errors prevented for user getting created..</h3>
- <ul>
-  <% @user.errors.full_messages.each do |msg|%>
-    <li style="color: red"><%= msg %></li>
+  <% if @user.errors.any? %>
+   <h3>Following errors prevented for user getting created..</h3>
+   <ul>
+    <% @user.errors.full_messages.each do |msg|%>
+      <li style="color: red"><%= msg %></li>
+    <%end%>
+   </ul>
   <%end%>
- </ul>
-<%end%>
 
-<%= form_for :user, url: users_path do |f| %>
+  <%= form_for :user, url: users_path do |f| %>
 
-  <p> 
-  	Name: <%= f.text_field :name %> </br> 
-  </p>
+    <p> 
+    	Name: <%= f.text_field :name %> </br> 
+    </p>
 
-  <p>
-  	Email: <%= f.text_field :email %> </br>
-  </p>	
-  
-  <p>
-  	Password: <%= f.password_field :password_digest %> </br>
-  </p>
+    <p>
+    	Email: <%= f.text_field :email %> </br>
+    </p>	
+    
+    <p>
+    	Password: <%= f.password_field :password_digest %> </br>
+    </p>
 
-  <p>
-    Role: <%= f.text_field :role %>
-  </p>
+    <p>
+      Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
+    </p>
 
-  <p>
-    Phone: <%= f.text_field :phone %>
-  </p>
+    <p>
+      Phone: <%= f.text_field :phone %>
+    </p>
 
-  <p>
-    Address: <%= f.text_field :address %>
-  </p>
-  
-  <p>
-    <%= f.submit "Submit" %>
-  </p>
+    <p>
+      Address: <%= f.text_field :address %>
+    </p>
+    
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
 
-  <center>
-    <h3> <%= link_to 'Login', new_sessions_path %> </h3>
-  </center>
+    <center>
+      <h4>
+        <%=link_to "Go Back", root_path%>
+      </h4>
+    </center>
 
-<% end %>
+  <% end %>

@@ -12,7 +12,6 @@ class TasksController < ApplicationController
 
   def new
     @task = current_user.tasks.build
-    @categories = Category.all.map{ |cat| [cat.name, cat.id] }
   end
     
   def edit
@@ -21,9 +20,7 @@ class TasksController < ApplicationController
   
   def create
     @task = current_user.tasks.build(allowed_params)
-    @task.user = current_user
-    @task.category_id = params[:category_id]
-    if @task.save!
+    if @task.save
       flash[:success] = "You have created your task successfully"
       redirect_to tasks_path
     else
@@ -47,6 +44,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    flash[:notice] = "Article was successfully deleted"
     redirect_to tasks_path
   end
 

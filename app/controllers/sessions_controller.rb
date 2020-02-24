@@ -19,5 +19,22 @@ class SessionsController < ApplicationController
     redirect_to new_sessions_path
   end
 
+  def show
+    @current_user ||= User.find(session[:user])
+  end
+
+  def edit
+    @current_user ||= User.find(session[:user])
+  end
+
+  def update
+    if @current_user.update_attributes!(params.require(:current_user).permit(:name, :email, :role,
+    :phone, :address))
+      redirect_to sessions_path
+    else
+      render 'edit'
+    end
+  end  
+
 
 end

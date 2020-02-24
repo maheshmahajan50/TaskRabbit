@@ -1,15 +1,27 @@
-<pre><center>
+<p>
+  <center>
       <% if current_user %>
-         Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_sessions_path, method: 'delete' %>
+        <h5>
+          Signed in as: <b><%= current_user.name %></b> | <%= link_to "Logout", logout_sessions_path, method: 'delete' %> 
+        </h5>
       <% else %>
          <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', signup_path %>
-      <% end %> </br> </center> </pre>
-<p>      
-Categories : 
-<% Category.all.each do |category| %>
-  <%= link_to "...#{category.name}...", tasks_path(category: category.name) %>
-<% end %>
+      <% end %>
+  </center>
 </p>
+
+<h3>
+  <center>
+    <%=link_to "Profile", sessions_path%>
+  </center>
+</h3>  
+
+<h4>      
+    <b>Categories :</b> 
+    <% Category.all.each do |category| %>
+      <%= link_to "#{category.name}", tasks_path(category: category.name), class: 'btn btn-primary btn-lg' %>
+    <% end %>
+</h4>
 
 <p></p>
 
@@ -24,23 +36,31 @@ Categories :
 
  <% @tasks.each do |task| %>
     
-    <h4>
+    <h2>
     	<%= "#{count}." %> <%=link_to task.title,task %>
-    </h4>
+    </h2>
 
-    <pre>
-        Location :<%= task.location %>
-    	Company :<%= task.company_name %>
-    </pre>
-
-    <p> 
-    	<%= task.description.truncate(50) %>
+    <p>
+        <b> Location :<%= task.location %> </b>
+    </p>
+    
+    <p>    
+    	 <b> Company :<%= task.company_name %> </b>
     </p>
 
-    <h6 style="color: #006666">
+    <h5> 
+    	<%= task.description.truncate(50) %>
+    </h5>
+
+    <h4 style="color: #006666">
     	Category :<%=task.category.name%>
-    </h6>
+    </h4>
 
     <% count += 1 %>
+    <p>
+      </br>
+    </p>
 
  <% end %>
+
+ 

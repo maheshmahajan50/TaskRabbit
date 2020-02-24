@@ -1,12 +1,9 @@
+<div class='center jumbotron'>
 
-<center>
-    <h3>
-      Welcome to our website
-    </h3>
-</center>    
-
-<center>
-  <h5> 
-    <%= link_to 'Signup', new_user_path  %> | <%= link_to 'Login', new_sessions_path %>
-  </h5>
-</center>  
+    <h1>
+      <b>Welcome to our website</b>
+    </h1>    
+    <h3> 
+      <%= link_to 'Signup', new_user_path, class: 'btn btn-primary btn-lg'  %>  <%= link_to 'Login', new_sessions_path, class: 'btn btn-primary btn-lg' %>
+    </h3> 
+</div> 

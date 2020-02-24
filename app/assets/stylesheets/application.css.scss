@@ -1,0 +1,24 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+//= require bootstrap-sprockets
+
+.center{
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.jumbotron{
+  background-image: asset-url('tools-498202_1920.jpg');
+  background-size: cover;
+  height: 550px;
+}
+
+.footer{
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+

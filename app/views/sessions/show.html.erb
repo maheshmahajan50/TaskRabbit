@@ -1,0 +1,72 @@
+<center>
+    <h4 style="color: green">
+      <%=p "Hi! #{current_user.name}, its your details.. "%>
+    </h4>
+
+    <p>
+      <strong>Email:</strong>
+      <%= current_user.email %>
+    </p>
+
+    <p>
+      <strong>Name:</strong>
+      <%= current_user.name %>
+    </p>
+
+    <p>
+      <strong>Role:</strong>
+      <%= current_user.role %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= current_user.address %>
+    </p>
+
+    <p>
+      <strong>Contact no:</strong>
+      <%= current_user.phone %>
+    </p>
+
+    <h4>
+        <%=link_to 'Edit Details', edit_sessions_path%> | <%=link_to 'Go Home', tasks_path%>
+    </h4>
+    
+</center>
+
+<h2 style="background-color: #FFE4E1">
+  Your Tasks...
+</h2>  
+
+<%count = 1%>
+
+ <% current_user.tasks.each do |task| %>
+    
+    <h2>
+      <%= "#{count}." %> <%=link_to task.title,task %>
+    </h2>
+
+    <p>
+        <b> Location :<%= task.location %> </b>
+    </p>
+    
+    <p>    
+       <b> Company :<%= task.company_name %> </b>
+    </p>
+
+    <h5> 
+      <%= task.description.truncate(50) %>
+    </h5>
+
+    <h4 style="color: #006666">
+      Category :<%=task.category.name%>
+    </h4>
+
+    <% count += 1 %>
+    <p>
+      </br>
+    </p>
+
+ <% end %>
+
+

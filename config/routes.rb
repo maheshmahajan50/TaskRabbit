@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :tasks 
   
   resource :sessions,
-   only: [:new, :create], 
+   only: [:new, :create, :show, :edit, :update], 
    path_names: { new: 'login'} do
     member do
       delete :logout

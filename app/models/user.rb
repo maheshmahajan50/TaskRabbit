@@ -5,10 +5,11 @@ class User < ApplicationRecord
 
   validates :email, presence: :true, uniqueness:  { case_sensitive: false }
   validates :name, presence: :true, length: { in: 2..50 }
-  # :password, presence: :true, length: { in: 6..20 }
+  #validates :password_digest, presence: :true, length: { in: 6..20 }
   validates :role, presence: :true
   validates :phone, presence: :true, numericality: {message: "%{attribute} must be of 10 digits number"}
-
+  
+  
   def enc(string)
     Digest::MD5.hexdigest string
   end

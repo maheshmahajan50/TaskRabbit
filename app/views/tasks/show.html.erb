@@ -5,21 +5,21 @@
 </h3>
 
 <p>
-    Posted at: <%= @task.created_at.strftime("%b %d. %Y")%>
+    <b>Posted at: <%= @task.created_at.strftime("%b %d. %Y")%> </b>
 </p>
 
 <p>
-    Estimated Date: <%= @task.estimated_date.strftime("%b %d. %Y") %>
+   <b> Estimated Date: <%= @task.estimated_date.strftime("%b %d. %Y") %></b>
 </p>
 
 <p> <%= @task.description %> </p>
 
 <%if @task.user.id == current_user.id%> 
-<pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Delete task', @task, method: :delete, confirm: "Are you sure?" %>
-</pre>
+  <pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Delete task', @task, method: :delete, data: {confirm: "Are you sure?"} %>
+  </pre>
 <%else%>
   <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
-     <h4> <center> <%= link_to "Complete Task", user_path%> </center>
+     <h4> <center> <%= link_to "Complete Task", user_path, class: 'btn btn-primary btn-lg'%> </center>
   <%end%>
 <%end%>
 
@@ -31,4 +31,39 @@
 
 <h4>
   <center>  <%= link_to 'Go-home', tasks_path %>  </center>
-</h4> 
+</h4>
+
+<h2 style="background-color: #FFE4E1">
+  <%="#{@task.user.name}'s Tasks...."%>
+</h2>  
+
+<%count = 1%>
+
+ <% @task.user.tasks.each do |task| %>
+    
+    <h2>
+      <%= "#{count}." %> <%=link_to task.title,task %>
+    </h2>
+
+    <p>
+        <b> Location :<%= task.location %> </b>
+    </p>
+    
+    <p>    
+       <b> Company :<%= task.company_name %> </b>
+    </p>
+
+    <h5> 
+      <%= task.description.truncate(50) %>
+    </h5>
+
+    <h4 style="color: #006666">
+      Category :<%=task.category.name%>
+    </h4>
+
+    <% count += 1 %>
+    <p>
+      </br>
+    </p>
+
+ <% end %>
