@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user.email.downcase!
     if @user.save
       @user.password!(user_password[:password_digest])
-      flash[:notice] = "Hey! #{@user.name} :Your account created successfully! Now you can login"
+      flash[:success] = "Hey! #{@user.name} :Your account created successfully! Now you can login"
       session[:user_id] = @user.id
       redirect_to new_sessions_path
     else

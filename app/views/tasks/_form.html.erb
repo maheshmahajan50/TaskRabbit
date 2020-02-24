@@ -1,11 +1,5 @@
-<% if @task.errors.any? %>
- <p>Following errors prevented for task getting created..</p>
- <ul>
-  <% @task.errors.full_messages.each do |msg|%>
-    <li style="color: red"><%= msg %></li>
-  <%end%>
- </ul>
-<%end%>
+
+<%=render 'shared/errors', obj: @task%>
 
 <%= form_with model: @task, local: true do |f|%>
   <p>

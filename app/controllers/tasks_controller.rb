@@ -32,7 +32,8 @@ class TasksController < ApplicationController
     @categories = Category.all.map{ |cat| [cat.name, cat.id] }
 
     if @task.update_attributes!(allowed_params)
-      redirect_to task_path, :notice => 'Your post has been updated.'
+      flash[:success] = "Your task has been updated successfully"
+      redirect_to task_path
     else
       render 'edit'
     end    
@@ -44,7 +45,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:notice] = "Article was successfully deleted"
+    flash[:danger] = "Article was successfully deleted"
     redirect_to tasks_path
   end
 

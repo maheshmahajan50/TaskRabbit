@@ -1,5 +1,8 @@
 <% flash.each do |type, msg| %>
-    <div>
-     <%= msg %>
-    </div>
+  <div class='alert alert-<%="#{type}"%>' role="alert">
+  <a href="#" class="close" data-dismiss='alert'>&#215;</a>
+    <li><%=msg%></li>
+  </div>  
 <% end %>
+
+

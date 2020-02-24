@@ -1,6 +1,9 @@
-<center>
 
+
+<center>
   <h2>Edit form</h2>
+
+  <%=render 'shared/errors', obj: @current_user%>
 
   <%= form_for :current_user, url: sessions_path, method: 'patch' do |f| %>
 
