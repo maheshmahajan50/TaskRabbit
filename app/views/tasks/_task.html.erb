@@ -1,0 +1,30 @@
+<%count = 1%>
+
+ <% obj.each do |task| %>
+    
+    <h2>
+      <%= "#{count}." %> <%=link_to task.title,task %>
+    </h2>
+
+    <p>
+        <b> Location :<%= task.location %> </b>
+    </p>
+    
+    <p>    
+       <b> Company :<%= task.company_name %> </b>
+    </p>
+
+    <h5> 
+      <%= task.description.truncate(100) %>
+    </h5>
+
+    <h4 style="color: #006666">
+      Category :<%=task.category.name%>
+    </h4>
+
+    <% count += 1 %>
+    <p>
+      </br>
+    </p>
+
+ <% end %>

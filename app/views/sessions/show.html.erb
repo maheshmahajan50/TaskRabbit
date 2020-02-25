@@ -3,6 +3,12 @@
       <%=p "Hi! #{current_user.name}, its your details.. "%>
     </h4>
 
+    <% if current_user.profile_image.attached? %>
+     <div class='text center'>
+      <img src="<%=url_for(current_user.profile_image)%>" class="img-thumbnail" alt=".."  width="150" height="100">
+     </div> 
+    <% end %>
+
     <p>
       <strong>Email:</strong>
       <%= current_user.email %>
@@ -38,35 +44,6 @@
   Your Tasks...
 </h2>  
 
-<%count = 1%>
-
- <% current_user.tasks.each do |task| %>
-    
-    <h2>
-      <%= "#{count}." %> <%=link_to task.title,task %>
-    </h2>
-
-    <p>
-        <b> Location :<%= task.location %> </b>
-    </p>
-    
-    <p>    
-       <b> Company :<%= task.company_name %> </b>
-    </p>
-
-    <h5> 
-      <%= task.description.truncate(50) %>
-    </h5>
-
-    <h4 style="color: #006666">
-      Category :<%=task.category.name%>
-    </h4>
-
-    <% count += 1 %>
-    <p>
-      </br>
-    </p>
-
- <% end %>
+<%= render 'tasks/task', obj: current_user.tasks %>
 
 

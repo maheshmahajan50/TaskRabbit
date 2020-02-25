@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task,    only: [:edit, :update, :destroy]
+  before_action :set_task,    only: [:edit, :update, :destroy]
 
   def index
     if params[:category].blank?
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :company_name, :location, :estimated_date, :category_id, :user_id)
   end 
 
-  def find_task
+  def set_task
     @task = current_user.tasks.find(params[:id])
   end  
 

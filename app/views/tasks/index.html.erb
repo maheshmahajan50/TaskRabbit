@@ -1,20 +1,17 @@
 <p>
   <center>
       <% if current_user %>
-        <h5>
+        <h4>
           Signed in as: <b><%= current_user.name %></b> | <%= link_to "Logout", logout_sessions_path, method: 'delete' %> 
-        </h5>
+        </h4>
       <% else %>
          <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', signup_path %>
       <% end %>
   </center>
 </p>
 
-<h3>
-  <center>
-    <%=link_to "Profile", sessions_path%>
-  </center>
-</h3>  
+
+<%=link_to "Profile #{current_user.tasks.count}", sessions_path, class: "btn btn-success btn-lg"%> 
 
 <h4>      
     <b>Categories :</b> 
@@ -32,35 +29,5 @@
 	</center>
 </h3>
 
-<%count = 1%>
-
- <% @tasks.each do |task| %>
-    
-    <h2>
-    	<%= "#{count}." %> <%=link_to task.title,task %>
-    </h2>
-
-    <p>
-        <b> Location :<%= task.location %> </b>
-    </p>
-    
-    <p>    
-    	 <b> Company :<%= task.company_name %> </b>
-    </p>
-
-    <h5> 
-    	<%= task.description.truncate(100) %>
-    </h5>
-
-    <h4 style="color: #006666">
-    	Category :<%=task.category.name%>
-    </h4>
-
-    <% count += 1 %>
-    <p>
-      </br>
-    </p>
-
- <% end %>
-
+<%= render 'task', obj: @tasks%>
  

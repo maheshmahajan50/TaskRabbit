@@ -35,7 +35,7 @@
   </p>
 
   <p>
-    <%= f.submit "Submit" %>  
+    <%= f.submit(@task.new_record? ? 'Add Task' : 'Update Task', class: "btn btn-primary btn-lg") %>  
   </p>
 
 <% end %>

@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     if user && user.authenticate?(params[:password_digest])
+      flash[:success] = "Hi!! #{user.name}, you're successfully logged in."
       session[:user_id] = user.id
       redirect_to tasks_path
     else

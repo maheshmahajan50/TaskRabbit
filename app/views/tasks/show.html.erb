@@ -5,7 +5,11 @@
 </h3>
 
 <p>
-    <b>Posted at: <%= @task.created_at.strftime("%b %d. %Y")%> </b>
+    <b>Posted at: <%= time_ago_in_words(@task.created_at) %> ago </b>
+</p>
+
+<p>
+    <b>Last updated: <%= time_ago_in_words(@task.updated_at) %> ago </b>
 </p>
 
 <p>
@@ -19,7 +23,11 @@
   </pre>
 <%else%>
   <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
-     <h4> <center> <%= link_to "Complete Task", user_path, class: 'btn btn-primary btn-lg'%> </center>
+     <h4>
+      <center> 
+        <%= link_to "Complete Task", user_path, class: 'btn btn-primary btn-lg'%> 
+      </center> 
+    </h4>
   <%end%>
 <%end%>
 
@@ -37,33 +45,4 @@
   <%="#{@task.user.name}'s Tasks...."%>
 </h2>  
 
-<%count = 1%>
-
- <% @task.user.tasks.each do |task| %>
-    
-    <h2>
-      <%= "#{count}." %> <%=link_to task.title,task %>
-    </h2>
-
-    <p>
-        <b> Location :<%= task.location %> </b>
-    </p>
-    
-    <p>    
-       <b> Company :<%= task.company_name %> </b>
-    </p>
-
-    <h5> 
-      <%= task.description.truncate(50) %>
-    </h5>
-
-    <h4 style="color: #006666">
-      Category :<%=task.category.name%>
-    </h4>
-
-    <% count += 1 %>
-    <p>
-      </br>
-    </p>
-
- <% end %>
+<%= render 'task', obj: @task.user.tasks %>

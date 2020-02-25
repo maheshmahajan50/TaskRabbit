@@ -5,6 +5,14 @@
 
   <%= form_for :user, url: users_path do |f| %>
      
+    <p>
+      <%= f.label :profile_image%>
+    </p>
+
+    <p>
+      <%=f.file_field :profile_image%> </br>
+    </p>
+    
     <p> 
     	Name: <%= f.text_field :name %> </br> 
     </p>

@@ -6,30 +6,38 @@
   <%=render 'shared/errors', obj: @current_user%>
 
   <%= form_for :current_user, url: sessions_path, method: 'patch' do |f| %>
+        
+        <p>
+          <%= f.label :profile_image%>
+        </p>
 
-  <p> 
-    Name: <%= f.text_field :name %> </br> 
-  </p>
+        <p>
+          <%=f.file_field :profile_image%> </br>
+        </p>
+        
+        <p> 
+          Name: <%= f.text_field :name %> </br> 
+        </p>
 
-  <p>
-    Email: <%= f.text_field :email %> </br>
-  </p>  
-  
-  <p>
-      Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
-  </p>
+        <p>
+          Email: <%= f.text_field :email %> </br>
+        </p>  
+        
+        <p>
+            Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
+        </p>
 
-  <p>
-    Phone: <%= f.text_field :phone %>
-  </p>
+        <p>
+          Phone: <%= f.text_field :phone %>
+        </p>
 
-  <p>
-    Address: <%= f.text_field :address %>
-  </p>
-  
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+        <p>
+          Address: <%= f.text_field :address %>
+        </p>
+        
+        <p>
+          <%= f.submit "Update" %>
+        </p>
 
   <% end %>
 
