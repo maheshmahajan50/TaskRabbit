@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   def update
     @categories = Category.all.map{ |cat| [cat.name, cat.id] }
 
-    if @task.update_attributes!(allowed_params)
+    if @task.update_attributes(allowed_params)
       flash[:success] = "Your task has been updated successfully"
       redirect_to task_path
     else

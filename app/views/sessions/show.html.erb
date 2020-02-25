@@ -3,11 +3,7 @@
       <%=p "Hi! #{current_user.name}, its your details.. "%>
     </h4>
 
-    <% if current_user.profile_image.attached? %>
-     <div class='text center'>
-      <img src="<%=url_for(current_user.profile_image)%>" class="img-thumbnail" alt=".."  width="150" height="100">
-     </div> 
-    <% end %>
+   <%=render 'shared/image', obj: current_user %>
 
     <p>
       <strong>Email:</strong>
@@ -26,16 +22,16 @@
 
     <p>
       <strong>Address:</strong>
-      <%= current_user.address %>
+      <i><%= current_user.address %></i>
     </p>
-
+      
     <p>
       <strong>Contact no:</strong>
       <%= current_user.phone %>
     </p>
 
     <h4>
-        <%=link_to 'Edit Details', edit_sessions_path%> | <%=link_to 'Go Home', tasks_path%>
+        <%=link_to 'Edit Profile', edit_sessions_path%> | <%=link_to 'Go Home', tasks_path%>
     </h4>
     
 </center>

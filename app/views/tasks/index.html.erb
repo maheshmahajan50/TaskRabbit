@@ -11,12 +11,12 @@
 </p>
 
 
-<%=link_to "Profile #{current_user.tasks.count}", sessions_path, class: "btn btn-success btn-lg"%> 
+<%=link_to "Profile #{current_user.tasks.count}", sessions_path, class: "btn btn-success btn-md"%> 
 
 <h4>      
     <b>Categories :</b> 
     <% Category.all.each do |category| %>
-      <%= link_to "#{category.name}", tasks_path(category: category.name), class: 'btn btn-primary btn-lg' %>
+      <%= link_to "#{category.name}", tasks_path(category: category.name), class: 'btn btn-primary btn-md' %>
     <% end %>
 </h4>
 

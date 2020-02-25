@@ -1,3 +1,9 @@
+<center>
+  <h4 style="color: green">Created by : <%=@task.user.name%></h4>
+</center>  
+
+<%= render 'shared/image', obj: @task.user %>
+
 <h3 style="background-color: #F5F5DC"> 
 	<center> <b>
 		<%= @task.title %> </b>
@@ -5,22 +11,25 @@
 </h3>
 
 <p>
-    <b>Posted at: <%= time_ago_in_words(@task.created_at) %> ago </b>
+    <b>Posted at:</b> <%= time_ago_in_words(@task.created_at) %> ago 
 </p>
 
 <p>
-    <b>Last updated: <%= time_ago_in_words(@task.updated_at) %> ago </b>
+    <b>Last updated: </b><%= time_ago_in_words(@task.updated_at) %> ago 
 </p>
 
 <p>
-   <b> Estimated Date: <%= @task.estimated_date.strftime("%b %d. %Y") %></b>
+   <b> Estimated Date:</b> <%= @task.estimated_date.strftime("%b %d. %Y") %>
 </p>
 
 <p> <%= @task.description %> </p>
 
 <%if @task.user.id == current_user.id%> 
-  <pre style="font-size:20px;"><%= link_to 'Edit task', edit_task_path(@task) %>  <%= link_to 'Delete task', @task, method: :delete, data: {confirm: "Are you sure?"} %>
-  </pre>
+    <p style="font-size:20px;">
+      <%= link_to 'Edit task', edit_task_path(@task) %> | 
+      <%= link_to 'Delete task', @task, method: :delete,
+                                data: {confirm: "Are you sure?"} %>
+    </p>
 <%else%>
   <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
      <h4>

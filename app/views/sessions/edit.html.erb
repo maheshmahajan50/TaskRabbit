@@ -1,9 +1,10 @@
+<center>
+<h2><b>Edit Profile</b></h2>
+</center>
 
+<%=render 'shared/errors', obj: @current_user%>
 
 <center>
-  <h2>Edit form</h2>
-
-  <%=render 'shared/errors', obj: @current_user%>
 
   <%= form_for :current_user, url: sessions_path, method: 'patch' do |f| %>
         
@@ -21,7 +22,7 @@
 
         <p>
           Email: <%= f.text_field :email %> </br>
-        </p>  
+        </p>   
         
         <p>
             Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>

@@ -30,8 +30,8 @@ class SessionsController < ApplicationController
   end
 
   def update
-    if @current_user.update_attributes!(params.require(:current_user).permit(:name, :email, :role,
-    :phone, :address))
+    if @current_user.update_attributes(params.require(:current_user).permit(:name,
+                                       :email, :role, :phone, :address, :profile_image))
       flash[:success] = "Your details have been successfully updated..."
       redirect_to sessions_path
     else

@@ -3,11 +3,7 @@
       <%=p "Contact Information of the #{@task.title}"%>
     </h4>
  
-   <% if @task.user.profile_image.attached? %>
-     <div class='text center'>
-      <img src="<%=url_for(@task.user.profile_image)%>" class="img-thumbnail" alt=".."  width="150" height="100">
-     </div>
-   <% end %>
+   <%=render 'shared/image', obj: @task.user %>
 
 
     <p>
@@ -23,7 +19,7 @@
 
     <p>
       <strong>Address:</strong>
-      <%= @task.user.address %>
+      <i><%= @task.user.address %></i>
     </p>
 
     <p>
@@ -34,4 +30,5 @@
     <h4>
       <%=link_to 'Go Back', task_path%>
     </h4>
+
 </center>    
