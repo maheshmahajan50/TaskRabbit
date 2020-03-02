@@ -1,19 +1,19 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  before_action :authorize
-  helper_method :current_user
-  
-  def current_user
-    @current_user ||= User.find(session[:user_id])
-  end
-  
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def authorize
-    redirect_to sessions_path unless logged_in?
-  end
+ def after_sign_in_path_for(resource)
+     tasks_path
+  end  
+ 
+ def after_sign_out_path_for(resource)
+    root_path
+ end
+   
+  protected
 
-  def logged_in?
-    !current_user.nil?
-  end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :profile_image, :role, :address, :phone ])
+  end 
 
 end

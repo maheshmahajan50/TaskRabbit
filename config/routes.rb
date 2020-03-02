@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'welcome#index'
 
-  resources :users, 
-             only: [:new, :create, :show], 
-             path_names: {new: 'signup'}
+  resources :users, only: [:show]
 
   resources :tasks 
   
-  resource :sessions,
-           only: [:new, :create, :show, :edit, :update], 
-           path_names: { new: 'login'} do
-    member do
-      delete :logout
-    end
-  end
-  
+  resource :sessions, only: [:show, :edit, :update]
+
 end

@@ -1,6 +1,10 @@
 require 'digest'
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_many :tasks,  dependent: :destroy
   has_one_attached :profile_image
 
@@ -13,24 +17,25 @@ class User < ApplicationRecord
              numericality: {message: "%{attribute} must be of 10 digits number"}
   
   
-  def enc(string)
-    Digest::MD5.hexdigest string
-  end
+  # def enc(string)
+  #   Digest::MD5.hexdigest string
+  # end
 
-  def password
-    password_digest
-  end
+  # def password
+  #   password_digest
+  # end
  
-  def authenticate?(authentication_password)
-    password == enc(authentication_password)
-  end
+  # def authenticate?(authentication_password)
+  #   password == enc(authentication_password)
+  # end
 
-  def password=(authentication_password)
-    self.password_digest = enc(authentication_password)
-  end
+  # def password=(authentication_password)
+  #   self.password_digest = enc(authentication_password)
+  # end
 
-  def password!(authentication_password)
-    self.password = authentication_password
-    save!
-  end
+  # def password!(authentication_password)
+  #   self.password = authentication_password
+  #   save!
+  # end
+  
 end

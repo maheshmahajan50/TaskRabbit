@@ -1,0 +1,58 @@
+
+
+    <h2>Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", obj: resource %>
+      
+      <div class="field">
+        <%= f.label :profile_image%>
+        <%=f.file_field :profile_image%>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %></br>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %></br>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+       <div class="field">
+        <%= f.label :role %>
+        <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :phone %>
+        <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary btn-md"%>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
