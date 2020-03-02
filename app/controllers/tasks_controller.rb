@@ -3,10 +3,10 @@ class TasksController < ApplicationController
 
   def index
     if params[:category].blank?
-      @tasks = Task.all.order("created_at DESC")
+      @tasks = Task.paginate(page: params[:page], per_page: 5).order("created_at DESC")
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @tasks = Task.all.where(category_id: @category_id).order("created_at DESC")
+      @tasks = Task.paginate(page: params[:page], per_page: 5).where(category_id: @category_id).order("created_at DESC")
     end      
   end
 
@@ -41,6 +41,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @user_tasks = @task.user.tasks.paginate(page: params[:page], per_page: 5)
   end
 
   def destroy

@@ -38,8 +38,14 @@
 
 <h2 style="background-color: #FFE4E1">
   Your Tasks...
-</h2>  
+</h2>
 
-<%= render 'tasks/task', obj: current_user.tasks %>
+<div class="center">
+  <%= will_paginate @current_user_tasks %>
+</div>  
 
+<%= render 'tasks/task', obj: @current_user_tasks %>
 
+<div class="center">
+  <%= will_paginate @current_user_tasks %>
+</div>

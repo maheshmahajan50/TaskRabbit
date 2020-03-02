@@ -1,11 +1,11 @@
 <div class='container'>
-
-    <%count = 1%>
-
+    
+    <ul>
      <% obj.each do |task| %>
-        
+        <li>
+
         <h2>
-          <%= "#{count}." %> <%=link_to task.title,task %>
+          <%=link_to task.title,task %>
         </h2>
 
         <p>
@@ -23,12 +23,13 @@
         <h4 style="color: #006666">
           Category :<%=task.category.name%>
         </h4>
-
-        <% count += 1 %>
         <p>
           </br>
         </p>
 
+      </li>  
+
      <% end %>
+    </ul> 
 
 </div>

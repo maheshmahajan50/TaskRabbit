@@ -24,10 +24,17 @@
 
 <h3>
 	<center>
-		<%= link_to '~ Add new Task ~',new_task_path %>                   
-
+		<%= link_to '~ Add new Task ~',new_task_path %>
 	</center>
 </h3>
 
-<%= render 'task', obj: @tasks%>
+<div align='center'>
+  <%= will_paginate %>
+</div>
+
+<%= render 'task', obj: @tasks %>
+
+<div align='center'>
+  <%= will_paginate %>
+</div>
  
