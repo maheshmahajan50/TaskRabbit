@@ -1,35 +1,35 @@
 <div class='container'>
-    
-    <ul>
-     <% obj.each do |task| %>
-        <li>
+  <ul>
+   <% obj.each do |task| %>
+    <li>
 
-        <h2>
-          <%=link_to task.title,task %>
-        </h2>
+      <h2>
+        <%=link_to task.title,task %>
+      </h2>
 
-        <p>
-            <b> Location :<%= task.location %> </b>
-        </p>
-        
-        <p>    
-           <b> Company :<%= task.company_name %> </b>
-        </p>
+      <p>
+        <b> Location :<%= task.location %> </b>
+      </p>
+      
+      <p>    
+        <b> Company :<%= task.company_name %> </b>
+      </p>
 
-        <h5> 
-          <%= task.description.truncate(100) %>
-        </h5>
+      <h5> 
+        <%= task.description.truncate(100) %>
+      </h5>
 
-        <h4 style="color: #006666">
-          Category :<%=task.category.name%>
-        </h4>
-        <p>
-          </br>
-        </p>
+      <h4 style="color: #006666">
+        Category :<%=task.category.name%>
+      </h4>
 
-      </li>  
+      <p>
+        </br>
+      </p>
 
-     <% end %>
-    </ul> 
+    </li>
+   <% end %>
 
+  </ul> 
+  
 </div>

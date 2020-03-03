@@ -1,34 +1,33 @@
 <center>
-    <h4 style="color: green">
-      <%=p "Contact Information of the #{@task.title}"%>
-    </h4>
+  <h4 style="color: green">
+    <%=p "Contact Information of the #{@task.title}"%>
+  </h4>
+
+ <%=render 'shared/image', obj: @task.user %>
  
-   <%=render 'shared/image', obj: @task.user %>
+  <p>
+    <strong>Email:</strong>
+    <%= @task.user.email %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @task.user.name %>
+  </p>
 
 
-    <p>
-      <strong>Email:</strong>
-      <%= @task.user.email %>
-    </p>
+  <p>
+    <strong>Address:</strong>
+    <i><%= @task.user.address %></i>
+  </p>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @task.user.name %>
-    </p>
+  <p>
+    <strong>Contact no:</strong>
+    <%= @task.user.phone %>
+  </p>
 
-
-    <p>
-      <strong>Address:</strong>
-      <i><%= @task.user.address %></i>
-    </p>
-
-    <p>
-      <strong>Contact no:</strong>
-      <%= @task.user.phone %>
-    </p>
-
-    <h4>
-      <%=link_to 'Go Back', task_path%>
-    </h4>
+  <h4>
+    <%=link_to 'Go Back', task_path%>
+  </h4>
 
 </center>    

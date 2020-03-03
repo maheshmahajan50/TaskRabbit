@@ -4,11 +4,9 @@
 
 <%= render 'shared/image', obj: @task.user %>
 
-
-
 <h3 style="background-color: #F5F5DC"> 
-	<center> <b>
-		<%= @task.title %> </b>
+	<center> 
+    <b> <%= @task.title %> </b>
 	</center>
 </h3>
 
@@ -26,7 +24,7 @@
 
 <p> <%= @task.description %> </p>
 
-<%if @task.user == current_user || current_user.admin?%> 
+<%if @task.user == current_user %> 
     <p style="font-size:20px;">
       <%= link_to 'Edit task', edit_task_path(@task) %> | 
       <%= link_to 'Delete task', @task, method: :delete,
@@ -35,10 +33,10 @@
 <%else%>
   <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
      <h4>
-      <center> 
-        <%= link_to "Complete Task", user_path, class: 'btn btn-primary btn-lg'%> 
-      </center> 
-    </h4>
+        <center> 
+          <%= link_to "Complete Task", user_path, class: 'btn btn-primary btn-lg'%> 
+        </center> 
+     </h4>
   <%end%>
 <%end%>
 

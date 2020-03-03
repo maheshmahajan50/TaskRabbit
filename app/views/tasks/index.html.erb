@@ -2,7 +2,7 @@
   <center>
       <% if current_user %>
         <h4>
-          Signed in as: <b><%= current_user.name %> : <%="Admin" if current_user.admin?%></b> | <%= link_to "Logout", destroy_user_session_path, method: 'delete' %> 
+          Signed in as: <b><%= current_user.name %> :</b> | <%= link_to "Logout", destroy_user_session_path, method: 'delete' %> 
         </h4>
       <% else %>
          <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Signup', new_user_registration_path %>
