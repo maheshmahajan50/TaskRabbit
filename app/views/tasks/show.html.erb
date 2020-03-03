@@ -4,6 +4,8 @@
 
 <%= render 'shared/image', obj: @task.user %>
 
+
+
 <h3 style="background-color: #F5F5DC"> 
 	<center> <b>
 		<%= @task.title %> </b>
@@ -24,7 +26,7 @@
 
 <p> <%= @task.description %> </p>
 
-<%if @task.user.id == current_user.id%> 
+<%if @task.user == current_user || current_user.admin?%> 
     <p style="font-size:20px;">
       <%= link_to 'Edit task', edit_task_path(@task) %> | 
       <%= link_to 'Delete task', @task, method: :delete,
