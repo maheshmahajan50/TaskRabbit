@@ -3,6 +3,10 @@
 
 //= require bootstrap-sprockets
 
+body
+{
+  background-image: asset-url('box-1472804_1280.png')
+}
 
 .center{
   text-align: center;
@@ -26,7 +30,7 @@
 
 .task-title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2.5em;
   text-align: center;
 }
 
@@ -37,8 +41,8 @@
 }
 
 .footer{
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+  padding-top: 10px;
+  border-top: 2px solid #eaeaea;
   background-color: #FFE4E1;
   color: #777;
 }
@@ -51,3 +55,18 @@
   float: right;
 }
 
+.navbar{
+  background-color: #F0FFF0;
+}
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: black;
+    font-weight: bold;
+}
+
+#logo:hover {
+    color: green;
+    text-decoration: none;
+}

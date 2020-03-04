@@ -4,16 +4,16 @@
    <%= render 'layouts/head'%>
   </head>
 
-  <body style="background-color: #F0FFFF">
+  <body>
 
-      <%=render 'layouts/header'%>
+      <%=render 'layouts/navigation'%>
 
       <%= render 'layouts/messages' %>
 
       <div class="container">
         <%= yield %>
       </div> 
-
+      
       <%= render 'layouts/footer'%>
 
   </body>

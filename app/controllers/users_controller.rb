@@ -1,12 +1,12 @@
 # This class is for controlling the actions of user.
 # class UsersController
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   def show
     @task = Task.find(params[:id])
   end
-
+  
   private
 
   def user_params

@@ -1,7 +1,7 @@
 # This class is for controlling the sessions controller.
 # class SessionsController
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create]
+  skip_before_action :authenticate_user!, only: %i[show edit update]
 
   def show
     # @current_user ||= User.find(session[:user])

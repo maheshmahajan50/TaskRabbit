@@ -2,7 +2,6 @@
 # class TasksController
 class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
-
   def index
     if params[:category].blank?
       @tasks = Task.paginate(page: params[:page], per_page: 5).order('created_at DESC')

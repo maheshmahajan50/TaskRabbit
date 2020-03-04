@@ -1,16 +1,5 @@
-<p>
-  <center>
-      <% if current_user %>
-        <h4>
-          Signed in as: <b><%= current_user.name %> :</b> | <%= link_to "Logout", destroy_user_session_path, method: 'delete' %> 
-        </h4>
-      <% else %>
-         <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Signup', new_user_registration_path %>
-      <% end %>
-  </center>
-</p>
 
-<%=link_to "Profile #{current_user.tasks.count}", sessions_path(@current_user), class: "btn btn-success btn-md"%> 
+<%=link_to "Profile #{current_user.tasks.count}", sessions_path(@current_user), class: "btn btn-success btn-lg"%> 
 
 <h4>      
     <b>Categories :</b> 
@@ -18,14 +7,6 @@
       <%= link_to "#{category.name}", tasks_path(category: category.name), class: 'btn btn-primary btn-md' %>
     <% end %>
 </h4>
-
-<p></p>
-
-<h3>
-	<center>
-		<%= link_to '~ Add new Task ~',new_task_path %>
-	</center>
-</h3>
 
 <%= render 'shared/pagination', obj: nil %>
 
