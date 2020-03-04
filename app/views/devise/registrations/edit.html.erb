@@ -1,46 +1,94 @@
-<center>
-<h2><b>Edit Profile</b></h2>
-</center>
+<h2 align="center"><b>Edit Profile</b></h2>
+
 
 <%=render 'shared/errors', obj: @current_user%>
 
-<center>
-
-  <%= form_for :current_user, url: sessions_path, method: 'patch' do |f| %>
+<div class="row">
+  <div class="col-xs-12">
+  <%= form_for(:current_user, url: sessions_path, method: 'patch',:html => {class: "form-horizontal", role: "form"}) do |f| %>
         
-        <p>
+      <div class="form-group">
+       <div class="control-label col-sm-2">
           <%= f.label :profile_image%>
-        </p>
+       </div>
+       <div class="col-sm-8">   
+        <%=f.file_field :profile_image, class: "form-group"%>
+       </div>
+      </div>
 
-        <p>
-          <%=f.file_field :profile_image%> </br>
-        </p>
-        
-        <p> 
-          Name: <%= f.text_field :name %> </br> 
-        </p>
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :name %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.text_field :name, class: "form-control", placeholder: "Name", autofocus: true %>
+       </div>
+      </div>
 
-        <p>
-          Email: <%= f.text_field :email %> </br>
-        </p>   
-        
-        <p>
-            Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
-        </p>
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :email %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.email_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
+       </div>
+      </div> 
 
-        <p>
-          Phone: <%= f.text_field :phone %>
-        </p>
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %></br>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.password_field :password, class: "form-control", placeholder: "Password", autofocus: true %>
+       </div>
+      </div>
 
-        <p>
-          Address: <%= f.text_field :address %>
-        </p>
-        
-        <p>
-          <%= f.submit "Update" %>
-        </p>
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :password_confirmation %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirm", autofocus: true %>
+       </div>
+      </div> 
 
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :role %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]])%>
+       </div>
+      </div> 
+
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+           <%= f.label :phone %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.text_field :phone, class: "form-control", placeholder: "Contact No.", autofocus: true %>
+       </div>
+      </div> 
+
+      <div class="form-group">
+       <div class="control-label col-sm-2">
+          <%= f.label :address %>
+       </div>
+       <div class="col-sm-8">   
+        <%= f.text_field :address, class: "form-control", placeholder: "Address", autofocus: true %>
+       </div>
+      </div> 
+      
+      <div class="form-group">
+       <div class="col-sm-offset-2 col-sm-8">
+          <%= f.submit "Update", class: "btn btn-primary btn-md" %>
+       </div>
+      </div>
   <% end %>
-
-  <h4><%=link_to "Go Back", sessions_path%> </h4>
-</center>  
+</div>
+</div>
+  
+<h4 align="center"><%=link_to "Go Back", sessions_path%> </h4>

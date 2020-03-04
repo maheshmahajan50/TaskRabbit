@@ -36,16 +36,13 @@
     
 </center>
 
-<h2 style="background-color: #FFE4E1">
+<h2 style="background-color: #FFE4E1" align="center">
   Your Tasks...
 </h2>
 
-<div class="center">
-  <%= will_paginate @current_user_tasks %>
-</div>  
+<%= render 'shared/pagination', obj: @current_user_tasks %>
 
 <%= render 'tasks/task', obj: @current_user_tasks %>
 
-<div class="center">
-  <%= will_paginate @current_user_tasks %>
-</div>
+<%= render 'shared/pagination', obj: @current_user_tasks %>
+

@@ -27,13 +27,9 @@
 	</center>
 </h3>
 
-<div align='center'>
-  <%= will_paginate %>
-</div>
+<%= render 'shared/pagination', obj: nil %>
 
 <%= render 'task', obj: @tasks %>
 
-<div align='center'>
-  <%= will_paginate %>
-</div>
+<%= render 'shared/pagination', obj: nil %>
  

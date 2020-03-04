@@ -1,46 +1,21 @@
-<center>
-  <h2><b>Edit Profile</b></h2>
-</center>
+<h2 align="center"><b>Edit Profile</b></h2>
+
 
 <%=render 'shared/errors', obj: @current_user%>
 
-<center>
-
-  <%= form_for :current_user, url: sessions_path, method: 'patch' do |f| %> 
-    <p>
-      <%= f.label :profile_image%>
-    </p>
-
-    <p>
-      <%=f.file_field :profile_image%> </br>
-    </p>
-    
-    <p> 
-      Name: <%= f.text_field :name %> </br> 
-    </p>
-
-    <p>
-      Email: <%= f.text_field :email %> </br>
-    </p>   
-    
-    <p>
-        Role: <%= f.select(:role, [["Contractor","Contractor"],["Tasker","Tasker"]]) %>
-    </p>
-
-    <p>
-      Phone: <%= f.text_field :phone %>
-    </p>
-
-    <p>
-      Address: <%= f.text_field :address %>
-    </p>
-    
-    <p>
-      <%= f.submit "Update" %>
-    </p>
-
-  <% end %>
-
-  <h4><%=link_to "Go Back", sessions_path%> </h4>
+<div class="row">
+  <div class="col-xs-12">
+  <%= form_for(:current_user, url: sessions_path, method: 'patch',:html => {class: "form-horizontal", role: "form"}) do |f| %>
+        
+       <%=render "shared/form" %>
+      
+      <div class="form-group">
+         <div class="col-sm-offset-2 col-sm-8">
+            <%= f.submit "Update", class: "btn btn-primary btn-md" %>
+         </div>
+      </div>
+   <% end %>
+ </div>
+</div>
   
-</center>  
+<h4 align="center"><%=link_to "Go Back", sessions_path%> </h4>

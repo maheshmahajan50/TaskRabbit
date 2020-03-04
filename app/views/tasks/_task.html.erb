@@ -1,35 +1,25 @@
 <div class='container'>
-  <ul>
    <% obj.each do |task| %>
-    <li>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="well well-lg">
+            <div class="task-title">
+               <%=link_to task.title,task %>
+            </div>
 
-      <h2>
-        <%=link_to task.title,task %>
-      </h2>
-
-      <p>
-        <b> Location :<%= task.location %> </b>
-      </p>
-      
-      <p>    
-        <b> Company :<%= task.company_name %> </b>
-      </p>
-
-      <h5> 
-        <%= task.description.truncate(100) %>
-      </h5>
-
-      <h4 style="color: #006666">
-        Category :<%=task.category.name%>
-      </h4>
-
-      <p>
-        </br>
-      </p>
-
-    </li>
+            <div class="task-body">
+              <b> Location :<%= task.location %> </b></br>
+              <b> Company :<%= task.company_name %> </b>
+              </hr>
+              <h5> 
+                <%= task.description.truncate(100) %>
+              </h5>
+              <h4 style="color: #006666">
+                Category :<%=task.category.name%>
+              </h4>
+            </div>
+           </div>
+         </div>
+       </div>
    <% end %>
-
-  </ul> 
-  
 </div>

@@ -22,6 +22,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(allowed_params)
+    
     if @task.save
       flash[:success] = 'You have created your task successfully'
       redirect_to tasks_path

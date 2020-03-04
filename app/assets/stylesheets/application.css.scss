@@ -19,6 +19,23 @@
   height: 550px;
 }
 
+.task-actions {
+  border-top: 1px solid #eaeaea;
+  padding-top: 5px;
+}
+
+.task-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.task-body {
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .footer{
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
