@@ -4,6 +4,12 @@
     </h4>
 
    <%=render 'shared/image', obj: @user %>
+    
+    <% if @user.admin? %>
+      <h2 style="color: green">
+        <b>Admin</b>
+      </h2>
+    <% end %>  
 
     <h4>
       <strong>Email:</strong>

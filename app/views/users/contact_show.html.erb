@@ -5,30 +5,30 @@
 
  <%=render 'shared/image', obj: @task.user %>
  
-  <p>
-    <strong>Email:</strong>
-    <%= @task.user.email %>
-  </p>
+  <h4>
+      <strong>Email:</strong>
+      <%= @task.user.email %>
+    </h4>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @task.user.name %>
-  </p>
-  
-  <p>
-    <strong>Role:</strong>
-    <%= @task.user.role %>
-  </p>  
+    <h4>
+      <strong>Name:</strong>
+      <%= @task.user.name %>
+    </h4>
 
-  <p>
-    <strong>Address:</strong>
-    <i><%= @task.user.address %></i>
-  </p>
+    <h4>
+      <strong>Role:</strong>
+      <%= @task.user.role %>
+    </h4>
 
-  <p>
-    <strong>Contact no:</strong>
-    <%= @task.user.phone %>
-  </p>
+    <h4>
+      <strong>Address:</strong>
+      <i><%= @task.user.address %></i>
+    </h4>
+      
+    <h4>
+      <strong>Contact no:</strong>
+      <%= @task.user.phone %>
+    </h4>
 
   <h4>
     <%=link_to 'Go Back', task_path%>

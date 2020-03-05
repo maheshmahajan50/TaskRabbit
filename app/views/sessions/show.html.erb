@@ -4,6 +4,12 @@
     </h4>
 
    <%=render 'shared/image', obj: current_user %>
+     
+    <% if current_user.admin? %>
+      <h2 style="color: green">
+        <b>Admin</b>
+      </h2>
+    <% end %> 
 
     <h4>
       <strong>Email:</strong>
@@ -45,4 +51,3 @@
 <%= render 'tasks/task', obj: @current_user_tasks %>
 
 <%= render 'shared/pagination', obj: @current_user_tasks %>
-

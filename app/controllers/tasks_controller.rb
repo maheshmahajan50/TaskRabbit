@@ -2,6 +2,7 @@
 # class TasksController
 class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
   def index
     if params[:category].blank?
       @tasks = Task.paginate(page: params[:page], per_page: 5).order('created_at DESC')
@@ -16,7 +17,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @categories = Category.all.map { |cat| [cat.name, cat.id] }
   end
 
   def create
@@ -31,8 +31,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @categories = Category.all.map { |cat| [cat.name, cat.id] }
-
     if @task.update_attributes(allowed_params)
       flash[:success] = 'Your task has been updated successfully'
       redirect_to task_path
@@ -63,6 +61,13 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    @task = Task.find(params[:id])
   end
+
+  def require_same_user
+    if current_user != @task.user and !current_user.admin?
+      flash[:danger] = "You can only edit and delete your own task"
+      redirect_to tasks_path
+    end  
+  end  
 end

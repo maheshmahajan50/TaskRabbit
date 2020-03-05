@@ -7,14 +7,14 @@
 
     <ul class="nav navbar-nav">
       <% if user_signed_in? %>
-        <li style="font-size: 17px"><%= link_to '~ Add new Task ~',new_task_path %></li>
+       <li style="font-size: 17px"><%= link_to '~ Add new Task ~',new_task_path %></li>
         <li style="font-size: 17px"><%= link_to 'Users', users_path%></li>
      <%end%>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-        <li style="font-size: 17px"><a><span class="glyphicon glyphicon-user"></span>  Signed in as : <%=current_user.name%></a></li> 
+      <% if user_signed_in? %>
+        <li style="font-size: 17px"><a><span class="glyphicon glyphicon-user"></span>  Signed in as :<%="[Admin]" if current_user.admin? %> <%=current_user.name%></a></li> 
         <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
       <%end%>
     </ul>
