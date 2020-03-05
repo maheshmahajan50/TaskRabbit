@@ -1,0 +1,25 @@
+<%=render 'shared/pagination', obj: @users%>
+
+<div class='container'>
+   <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="well well-lg">
+            <div class="task-title">
+               <%=render 'shared/image', obj: user%>
+               <%=link_to "#{user.name}", user_path(user) %>
+            </div>
+
+            <div class="task-body">
+                <h4 align="center">
+                  <strong>Role:</strong>
+                  <%= user.role %>
+                </h4>
+            </div>
+           </div>
+         </div>
+       </div>
+   <% end %>
+</div>
+
+<%=render 'shared/pagination', obj: @users%>

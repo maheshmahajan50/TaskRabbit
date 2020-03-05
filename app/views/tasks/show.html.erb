@@ -20,8 +20,13 @@
 
   <hr>
 
-  <%= simple_format(@task.description) %>
-  
+   <p> <%= simple_format(@task.description) %> </p>
+   <p id='demo'>hello </p>
+
+   <button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Zoom In</button>
+
+   <button type="button" onclick="document.getElementById('demo').style.fontSize='15px'">Zoom Out</button>
+
   <div class="task-actions" align="center">
     <%if @task.user == current_user %> 
       <%= link_to 'Edit task', edit_task_path(@task), class: "btn btn-md btn-primary" %>
@@ -32,7 +37,7 @@
     <%else%>
        <% if current_user.role == "Tasker" && @task.user.id != current_user.id %>
         <h4 align="center">
-             <%= link_to "Complete Task", user_path, class: 'btn  btn-primary btn-lg'%>  
+             <%= link_to "Complete Task", contact_show_user_path, class: 'btn  btn-primary btn-lg'%>  
         </h4>
        <%end%>
     <%end%>

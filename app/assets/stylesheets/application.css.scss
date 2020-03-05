@@ -43,11 +43,15 @@ body
 .footer{
   padding-top: 10px;
   border-top: 2px solid #eaeaea;
-  background-color: #FFE4E1;
+  background-color: #F0FFF0;
   color: #777;
 }
 
 .img-thumbnail{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
   border-radius: 50%;
 }
 

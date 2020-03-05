@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
 
-  resources :users, only: [:show]
+  resources :users, only: [:index,:show] do
+    member do
+      get 'contact_show'
+    end  
+  end  
+
 
   resources :tasks 
   
