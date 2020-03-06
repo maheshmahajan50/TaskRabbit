@@ -17,6 +17,10 @@ class TasksController < ApplicationController
   end
 
   def edit
+    if @task.user.main_admin?
+      flash[:info] = "Oops!! You can't edit main admin's task"
+      redirect_to task_path
+    end  
   end
 
   def create
@@ -46,9 +50,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-    flash[:danger] = 'Article was successfully deleted'
-    redirect_to tasks_path
+    unless @task.user.main_admin?
+      @task.destroy
+      flash[:danger] = 'Article was successfully deleted'
+      redirect_to tasks_path
+    else
+      flash[:info] = "Oops!!! You can't delete main admin's post"
+      redirect_to task_path
+    end          
   end
 
   private

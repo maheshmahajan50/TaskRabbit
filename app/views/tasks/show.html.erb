@@ -26,12 +26,11 @@
    
 
   <div class="task-actions" align="center">
-    <%if ((@task.user == current_user) || current_user.admin?) %> 
+    <%if ((@task.user == current_user) || current_user.admin?) %>
       <%= link_to 'Edit task', edit_task_path(@task), class: "btn btn-md btn-primary" %>
       <%= link_to 'Delete task', @task, method: :delete,
                               data: { confirm: "Are you sure you want to delete the article?"},
                               class: "btn btn-md btn-danger" %>
-
     <%else%>
        <% if current_user.role == "Tasker" && @task.user != current_user %>
         <h4 align="center">
