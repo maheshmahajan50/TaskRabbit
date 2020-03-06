@@ -16,11 +16,25 @@ class UsersController < ApplicationController
   def contact_show
     @task = Task.find(params[:id])
   end
+
+  def make_admin
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    flash[:success] = "#{@user.name} is also an admin now"    
+    redirect_to users_path
+  end
+
+  def remove_admin
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    flash[:danger] = "#{@user.name} was not an admin now"     
+    redirect_to users_path
+  end  
   
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:danger] = "User and all tasks created by user have been deleted"
+    flash[:danger] = "User and all tasks created by user have been deleted"  
     redirect_to users_path
   end  
 
@@ -31,23 +45,17 @@ class UsersController < ApplicationController
                                  :phone, :address, :profile_image)
   end
 
-  def user_password
-    params.require(:user).permit(:password_digest)
-  end
-
   def require_same_user
     if current_user != @user and !current_user.admin?
       flash[:danger] = "You can only edit your own account"
       redirect_to tasks_path 
-    end
-    
+    end   
   end
 
   def require_admin
     if user_signed_in? and !current_user.admin?
       flash[:danger] = "Only admins can perform that action"
       redirect_to tasks_path
-    end
-      
+    end     
   end  
 end

@@ -5,11 +5,16 @@
 
    <%=render 'shared/image', obj: current_user %>
      
-    <% if current_user.admin? %>
+    <%if current_user.main_admin?%>
+      <h2 style="color: green">
+        <b>Main Admin</b>
+      </h2>
+    <%elsif current_user.admin?%>
       <h2 style="color: green">
         <b>Admin</b>
       </h2>
-    <% end %> 
+    <%end%> 
+ 
 
     <h4>
       <strong>Email:</strong>

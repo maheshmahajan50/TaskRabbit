@@ -14,7 +14,13 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li style="font-size: 17px"><a><span class="glyphicon glyphicon-user"></span>  Signed in as :<%="[Admin]" if current_user.admin? %> <%=current_user.name%></a></li> 
+        <li style="font-size: 17px"><a><span class="glyphicon glyphicon-user"></span>  Signed in as :
+        <%if current_user.main_admin?%>
+          [Main Admin]
+        <%elsif current_user.admin?%>
+          [Admin]
+        <%end%>  
+          <%=current_user.name%></a></li> 
         <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
       <%end%>
     </ul>

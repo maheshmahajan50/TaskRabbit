@@ -5,22 +5,39 @@
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
           <div class="well well-lg">
+            
             <div class="task-title">
                <%=render 'shared/image', obj: user%>
                <%=link_to "#{user.name}", user_path(user) %>
             </div>
-
+         
             <div class="task-body">
                 <h4 align="center">
                   <strong>Role:</strong>
                   <%= user.role %></br>
-                  <h4 align="center"><%= pluralize(user.tasks.count, "task") if user.tasks %></h4>
-
-                  <% if user_signed_in? and current_user.admin? and user != current_user %>
-                     <h4 align="center"><%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"}%></h4>
-
-                  <% end %>
                 </h4>
+                  
+                <h4 align="center">
+                  <%= pluralize(user.tasks.count, "task") if user.tasks %>
+                </h4>
+
+                <% if user_signed_in? and current_user.main_admin? and user != current_user %>
+
+                    <h4 align="center">
+                      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"} %>
+                    </h4>
+                     
+                    <%unless user.admin? %>
+                        <h4 align="center">
+                          <%= link_to "Grant admin privileges", make_admin_user_path(user), method: :put %>
+                        </h4>
+                    <% else %>
+                        <h4 align="center">
+                          <%= link_to "Revoke admin privileges", remove_admin_user_path(user), method: :put %>
+                        </h4>
+                    <%end%>
+
+                <% end %>
             </div>
            </div>
          </div>

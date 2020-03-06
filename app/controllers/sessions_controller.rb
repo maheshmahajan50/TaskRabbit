@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show edit update]
 
   def show
-    # @current_user ||= User.find(session[:user])
     @current_user_tasks = current_user.tasks.paginate(page: params[:page], per_page: 5)
   end
 
