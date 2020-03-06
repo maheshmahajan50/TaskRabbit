@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   before_action :require_admin, only: %i[destroy]
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 3)
+    @users = User.paginate(page: params[:page], per_page: 3).order('updated_at DESC')
   end
 
   def show
     @user = User.find(params[:id])
     @user_tasks = @user.tasks.paginate(page: params[:page], per_page: 5)
-  end  
+  end 
 
   def contact_show
     @task = Task.find(params[:id])
@@ -20,23 +20,23 @@ class UsersController < ApplicationController
   def make_admin
     @user = User.find(params[:id])
     @user.toggle!(:admin)
-    flash[:success] = "#{@user.name} is also an admin now"    
+    flash[:success] = "#{@user.name} is also an admin now.."    
     redirect_to users_path
   end
 
   def remove_admin
     @user = User.find(params[:id])
     @user.toggle!(:admin)
-    flash[:danger] = "#{@user.name} was not an admin now"     
+    flash[:danger] = "#{@user.name} is not an admin now"     
     redirect_to users_path
-  end  
+  end
   
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     flash[:danger] = "User and all tasks created by user have been deleted"  
     redirect_to users_path
-  end  
+  end
 
   private
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     if current_user != @user and !current_user.admin?
       flash[:danger] = "You can only edit your own account"
       redirect_to tasks_path 
-    end   
+    end
   end
 
   def require_admin
@@ -57,5 +57,5 @@ class UsersController < ApplicationController
       flash[:danger] = "Only admins can perform that action"
       redirect_to tasks_path
     end     
-  end  
+  end
 end

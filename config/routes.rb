@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'contact_show'
       put 'make_admin/:id' => 'users#make_admin', as: 'make_admin'
       put 'remove_admin/:id' => 'users#remove_admin', as: 'remove_admin'
-    end  
+    end
   end  
 
   resources :tasks 
