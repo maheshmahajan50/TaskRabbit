@@ -5,6 +5,7 @@
 // a relevant structure within app/javascript and 
 // only use these pack files to reference
 // that code so it'll be compiled.
+//= require jquery
 import "../stylesheets/application"
 import "bootstrap"
 document.addEventListener("turbolinks: load", () => {

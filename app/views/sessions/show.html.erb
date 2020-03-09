@@ -47,12 +47,24 @@
     
 </center>
 
-<h2 align="center">
+
+<h2 align='center' class='task' id='hidenseek'>
   <b>Your Tasks... </b>
 </h2>
 
+<div id='show'>
 <%= render 'shared/pagination', obj: @current_user_tasks %>
 
 <%= render 'tasks/task', obj: @current_user_tasks %>
 
 <%= render 'shared/pagination', obj: @current_user_tasks %>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#show').hide();
+  $("#hidenseek").click(function(){
+    $('#show').toggle(3000);
+    });
+});
+</script>

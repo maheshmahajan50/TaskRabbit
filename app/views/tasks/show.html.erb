@@ -21,9 +21,11 @@
   </h4>
 
   <hr>
+  <div id='content'>
+  <p><%= simple_format(@task.description) %> </p>
+  </div>
+  <a class="font-button plus">Zoom In</a> <a class="font-button minus">Zoom Out</a>
 
-   <p> <%= simple_format(@task.description) %> </p>
-   
 
   <div class="task-actions" align="center">
         <%if ((@task.user == current_user) || current_user.admin?) %>
@@ -32,15 +34,17 @@
               <%= link_to 'Delete task', @task, method: :delete,
                                       data: { confirm: "Are you sure you want to delete the article?"},
                                       class: "btn btn-md btn-danger" %>
-          <%end%>                          
-        <%else%>
+          <%else%>
            <% if current_user.role == "Tasker" && @task.user != current_user %>
             <h4 align="center">
                  <%= link_to "Complete Task", contact_show_user_path, class: 'btn  btn-primary btn-lg'%>  
             </h4>
            <%end%>
-        <%end%>
+          <%end%> 
+        <%end%>                         
+        
  </div>
+
 
  <h6> <b>Company  :<%= @task.company_name%> </b></h6>
 
@@ -51,15 +55,38 @@
   <h4 align="center">
     <%= link_to 'Go-home', tasks_path %>
   </h4>
- <h2 align="center">
-        <%= "#{@task.user.name}'s Tasks...." %>
+ <h2 class='task' align="center" id='hidenseek'>
+         <%= "#{@task.user.name}'s Tasks...." %>
  </h2>
 </div>
 
+<div id='show'>
 <%= render 'shared/pagination', obj: @user_tasks %>
 <%= render 'task', obj: @user_tasks %>
 <%= render 'shared/pagination', obj: @user_tasks %>
+</div>
 
+<script>
+$(document).ready(function(){
+  $('#show').hide();
+  $("#hidenseek").click(function(){
+    $('#show').fadeToggle(2000);
+  });
 
+  $(".font-button").bind("click", function () {
+                var size = parseInt($('#content').css("font-size"));
+                if ($(this).hasClass("plus")) {
+                    size = size + 8;
+                } else {
+                    size = size - 8;
+                    if (size <= 10) {
+                        size = 10;
+                    }
+                }
+                $('#content').css("font-size", size);
+            });
+
+});
+</script>
 
  

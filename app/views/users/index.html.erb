@@ -24,7 +24,7 @@
                 <% if user_signed_in? and current_user.main_admin? and user != current_user %>
 
                     <h4 align="center">
-                      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"} %>
+                      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"}%>
                     </h4>
                      
                     <%unless user.admin? %>

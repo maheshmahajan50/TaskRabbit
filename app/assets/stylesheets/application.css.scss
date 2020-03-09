@@ -8,6 +8,26 @@ body
   background-image: asset-url('box-1472804_1280.png')
 }
 
+
+.task{
+  text-align: center;
+  border-style: outset;
+  width: 100%;
+}
+
+.font-button
+{
+  background-color: powderblue;
+  height: 30px;
+  width: 70px;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  line-height: 30px;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
 .center{
   text-align: center;
   color: black;
