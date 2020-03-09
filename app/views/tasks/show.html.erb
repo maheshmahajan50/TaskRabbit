@@ -35,13 +35,20 @@
                                       data: { confirm: "Are you sure you want to delete the article?"},
                                       class: "btn btn-md btn-danger" %>
           <%else%>
+            <% if current_user.role == "Tasker" && @task.user != current_user %>
+            <h4 align="center">
+                 <%= link_to "Complete Task", contact_show_user_path, class: 'btn  btn-primary btn-lg'%>  
+            </h4>
+            <%end%>
+          <%end%>
+
+        <%else%>
            <% if current_user.role == "Tasker" && @task.user != current_user %>
             <h4 align="center">
                  <%= link_to "Complete Task", contact_show_user_path, class: 'btn  btn-primary btn-lg'%>  
             </h4>
-           <%end%>
-          <%end%> 
-        <%end%>                         
+          <%end%>
+        <%end%>                          
         
  </div>
 
