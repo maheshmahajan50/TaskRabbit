@@ -50,12 +50,11 @@
 
     <%= render 'shared/pagination', obj: @user_tasks %>
 </div>
-
 <script>
-  $(document).ready(function(){
-    $('#show').hide();
-    $("#hidenseek").click(function(){
-      $('#show').fadeToggle(2000);
-    });
+$(document).ready(function(){
+  $('#show').hide();
+  $("#hidenseek").click(function(){
+    $('#show').fadeToggle(2000);
   });
-</script>  
+ }); 
+</script>

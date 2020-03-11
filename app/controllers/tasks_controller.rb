@@ -5,10 +5,10 @@ class TasksController < ApplicationController
   before_action :require_same_user, only: %i[edit update destroy]
   def index
     if params[:category].blank?
-      @tasks = Task.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+      @tasks = paginated_tasks.with_order
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @tasks = Task.paginate(page: params[:page], per_page: 5).where(category_id: @category_id).order('created_at DESC')
+      @tasks = paginated_tasks.with_category(@category_id).with_order
     end
   end
 
@@ -69,5 +69,9 @@ class TasksController < ApplicationController
       flash[:danger] = "You can only edit and delete your own task"
       redirect_to tasks_path
     end  
+  end
+
+  def paginated_tasks
+    @paginate_tasks = Task.paginate(page: params[:page], per_page: 5)
   end  
 end

@@ -34,8 +34,10 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:danger] = "User and all tasks created by user have been deleted"  
-    redirect_to users_path
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to users_path }
+    end
   end
 
   private

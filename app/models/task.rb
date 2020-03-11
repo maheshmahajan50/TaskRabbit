@@ -7,4 +7,6 @@ class Task < ApplicationRecord
   validates :description, presence: true, length: { minimum: 60 }
   validates :company_name, presence: true, length: { in: 6..50 }
   validates :location, presence: true, length: { in: 6..50 }
+  scope :with_order, -> { order(updated_at: :desc)}
+  scope :with_category, -> (id) { where(category_id: id)}
 end

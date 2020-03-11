@@ -2,7 +2,7 @@
 
 <div class='container'>
    <% @users.each do |user| %>
-      <div class="row">
+      <div class="row" id="user_<%= user.id%>">
         <div class="col-xs-6 col-xs-offset-3">
           <div class="well well-lg">
             
@@ -11,7 +11,7 @@
                <%=link_to "#{user.name}", user_path(user) %>
             </div>
          
-            <div class="task-body">
+            <div class="task-body" >
                 <h4 align="center">
                   <strong>Role:</strong>
                   <%= user.role %></br>
@@ -23,8 +23,8 @@
 
                 <% if user_signed_in? and current_user.main_admin? and user != current_user %>
 
-                    <h4 align="center">
-                      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"}%>
+                    <h4 align="center" >
+                      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure to delete the user and all their tasks ?"}, remote: true %>
                     </h4>
                      
                     <%unless user.admin? %>
