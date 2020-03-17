@@ -69,7 +69,7 @@
 
 <div id='show'>
 <%= render 'shared/pagination', obj: @user_tasks %>
-<%= render 'task', obj: @user_tasks %>
+<%= render 'task', obj: @user_tasks || "There are no tasks of #{@user.name}" %>
 <%= render 'shared/pagination', obj: @user_tasks %>
 </div>
 

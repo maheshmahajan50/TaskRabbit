@@ -16,5 +16,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 2..50 }
   validates :role, presence: true
   validates :phone, presence: true,
-             numericality:{ message: '%{attribute} must be of 10 digits number' }
+             numericality:{ message: ' must be of 10 digits number' }
 end
